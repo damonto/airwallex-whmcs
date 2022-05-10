@@ -37,7 +37,6 @@ class Airwallex
         return new Intents($this->http);
     }
 
-
     /**
      * Refunds.
      *
