@@ -66,8 +66,14 @@ function airwallexwechatpay_link(array $params)
     return <<<HTML
         <script src="/modules/gateways/airwallex/qrcode.min.js"></script>
         <div style="width: 100%;">
-            <div id="qrcode" style="margin-left: 10%;"> </div>
+            <div id="qrcode"> </div>
         </div>
+
+        <style>
+            #qrcode img {
+                margin: 0 auto;
+            }
+        </style>
 
         <script>
             new QRCode(document.getElementById("qrcode"), '{$confirmed["next_action"]["qrcode_url"]}');
