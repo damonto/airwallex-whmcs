@@ -8,7 +8,7 @@ WHMCS >= 8 (Tested on WHMCS 8 only)
 
 ### Installation
 
-Copy all files into modules/gateways
+Copy all files to the `modules/gateways` directory.
 
 ### Configuration
 
