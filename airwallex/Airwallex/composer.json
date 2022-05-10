@@ -1,0 +1,10 @@
+{
+    "require": {
+        "nesbot/carbon": "^2.57"
+    },
+    "autoload": {
+        "psr-4": {
+            "Airwallex\\": "src/"
+        }
+    }
+}
