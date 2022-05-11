@@ -18,10 +18,8 @@ API Key: Airwallex Client API Key
 
 Webhook Secret Key: Airwallex Webhook Secret Key
 
-> Webhook:
+#### Airwallex
 
-1. Alipay: https://yoursystem.com/modules/gateways/airwallex/callback_alipay.php
-
-2. WeChat Pay: https://yoursystem.com/modules/gateways/airwallex/callback_wechatpay.php
+Webhook: https://yoursystem.com/modules/gateways/airwallex/callback.php
 
 Subscribe Events: `Payment Intent: Succeeded`

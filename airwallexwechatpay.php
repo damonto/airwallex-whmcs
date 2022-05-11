@@ -51,7 +51,9 @@ function airwallexwechatpay_link(array $params)
         'currency' => 'USD',
         'descriptor' => $params['description'],
         'merchant_order_id' => $params['invoiceid'],
-        'return_url' => (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
+        'metadata' => [
+            'payment_method' => 'airwallexwechatpay',
+        ],
         'customer' => [
             'email' => $params['client']->email,
             'first_name' => $params['client']->firstname,

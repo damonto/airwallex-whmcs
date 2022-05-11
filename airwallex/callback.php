@@ -5,7 +5,9 @@ require_once __DIR__ . '/../../../includes/gatewayfunctions.php';
 require_once __DIR__ . '/../../../includes/invoicefunctions.php';
 
 $payload = json_decode(file_get_contents('php://input'), true);
-$gatewayConfig = getGatewayVariables('airwallexwechatpay');
+$intent = $payload['data']['object'];
+
+$gatewayConfig = getGatewayVariables($intent['metadata']['payment_method']);
 
 if (!$gatewayConfig['type']) {
     die('Module Not Activated');
@@ -17,18 +19,16 @@ if ($hash !== $_SERVER['HTTP_X_SIGNATURE']) {
 }
 
 if (($payload['name'] ?? null) === 'payment_intent.succeeded') {
-    $intent = $payload['data']['object'];
-
-    $invoiceId = checkCbInvoiceID($intent['merchant_order_id'], 'airwallexaliwechatpay');
+    $invoiceId = checkCbInvoiceID($intent['merchant_order_id'], $intent['metadata']['payment_method']);
     checkCbTransID($intent['id']);
 
-    logTransaction('airwallexaliwechatpay', $payload, 'Success');
+    logTransaction($intent['metadata']['payment_method'], $payload, 'Success');
 
     addInvoicePayment(
         $intent['merchant_order_id'],
         $intent['id'],
         $intent['amount'],
         0,
-        'airwallexaliwechatpay'
+        $intent['metadata']['payment_method']
     );
 }
