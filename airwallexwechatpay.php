@@ -77,7 +77,8 @@ function airwallexwechatpay_link(array $params)
             }
 
             .logo {
-                height: 40px
+                height: 30px;
+                margin-top: 10px;
             }
 
         </style>
