@@ -67,12 +67,19 @@ function airwallexwechatpay_link(array $params)
         <script src="/modules/gateways/airwallex/qrcode.min.js"></script>
         <div style="width: 100%;">
             <div id="qrcode"> </div>
+            <img class="logo" src="https://wx.gtimg.com/pay_en/img/common/logo.png" alt="WeChat Pay Logo">
         </div>
 
         <style>
             #qrcode img {
                 margin: 0 auto;
+                height: 150px;
             }
+
+            .logo {
+                height: 40px
+            }
+
         </style>
 
         <script>
