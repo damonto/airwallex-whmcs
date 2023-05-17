@@ -27,7 +27,7 @@ if (($payload['name'] ?? null) === 'payment_intent.succeeded') {
     addInvoicePayment(
         $intent['merchant_order_id'],
         $intent['id'],
-        $intent['amount'],
+        $intent['metadata']['payment_method'] === 'airwallexfps' ? $intent['amount'] * $gatewayConfig['exchangeRate'] : $intent['amount'],
         0,
         $intent['metadata']['payment_method']
     );
