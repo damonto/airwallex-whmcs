@@ -54,7 +54,7 @@ function airwallexfps_link(array $params)
 {
     $airwallex = new Airwallex($params['clientId'], $params['apiKey']);
     $intent  = $airwallex->intents()->create([
-        'amount' => $params['amount'] * $params['exchangeRate'],
+        'amount' => round($params['amount'] * $params['exchangeRate'], 2),
         'currency' => 'HKD',
         'descriptor' => $params['description'],
         'merchant_order_id' => $params['invoiceid'],
@@ -94,7 +94,7 @@ function airwallexfps_link(array $params)
         </style>
 
         <script>
-            new QRCode(document.getElementById("qrcode"), '{$confirmed["next_action"]["qrcode_url"]}');
+            new QRCode(document.getElementById("qrcode"), '{$confirmed["next_action"]["qrcode"]}');
 
             setInterval(() => {
                 fetch("/modules/gateways/airwallex/invoice_status.php?invoiceid={$params['invoiceid']}")
