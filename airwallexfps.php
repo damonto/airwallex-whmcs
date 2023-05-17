@@ -77,7 +77,7 @@ function airwallexfps_link(array $params)
         <script src="/modules/gateways/airwallex/qrcode.min.js"></script>
         <div style="width: 100%;">
             <div id="qrcode"> </div>
-            <img class="logo" src="https://wx.gtimg.com/pay_en/img/common/logo.png" alt="WeChat Pay Logo">
+            <img class="logo" src="https://fps.hkicl.com.hk/images/fps/fps_color.svg" alt="FPS Logo">
         </div>
 
         <style>
