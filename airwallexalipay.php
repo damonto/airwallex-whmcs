@@ -73,7 +73,11 @@ function airwallexalipay_link(array $params)
 
         <script>
             setInterval(() => {
-                fetch("/modules/gateways/airwallex/invoice_status.php?invoiceid={$params['invoiceid']}")
+                fetch("/modules/gateways/airwallex/invoice_status.php?invoiceid={$params['invoiceid']}", {
+                    headers: {
+                        'Cache-Control': 'no-cache'
+                    }
+                })
                 .then(r => r.text())
                 .then(r => {
                     if (r === 'Paid') {

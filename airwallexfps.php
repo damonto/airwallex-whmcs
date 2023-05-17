@@ -97,7 +97,11 @@ function airwallexfps_link(array $params)
             new QRCode(document.getElementById("qrcode"), '{$confirmed["next_action"]["qrcode"]}');
 
             setInterval(() => {
-                fetch("/modules/gateways/airwallex/invoice_status.php?invoiceid={$params['invoiceid']}")
+                fetch("/modules/gateways/airwallex/invoice_status.php?invoiceid={$params['invoiceid']}", {
+                    headers: {
+                        'Cache-Control': 'no-cache'
+                    }
+                })
                 .then(r => r.text())
                 .then(r => {
                     if (r === 'Paid') {
